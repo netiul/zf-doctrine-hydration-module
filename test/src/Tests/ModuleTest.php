@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests;
 
 use Phpro\DoctrineHydrationModule\Module;
@@ -13,7 +15,7 @@ class ModuleTest extends TestCase
     /**
      * @test
      */
-    public function it_should_be_initializable()
+    public function itShouldBeInitializable(): void
     {
         $module = new Module();
         $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Module', $module);
@@ -22,7 +24,7 @@ class ModuleTest extends TestCase
     /**
      * @test
      */
-    public function it_should_provide_configuration()
+    public function itShouldProvideConfiguration(): void
     {
         $module = new Module();
         $this->assertIsArray($module->getConfig());

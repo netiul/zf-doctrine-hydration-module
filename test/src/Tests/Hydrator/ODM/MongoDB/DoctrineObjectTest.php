@@ -22,38 +22,36 @@ class DoctrineObjectTest extends BaseTest
      *
      * @return DoctrineObject
      */
-    protected function createHydrator($objectManager = null)
+    protected function createHydrator($objectManager = null): DoctrineObject
     {
         $objectManager = $objectManager ? $objectManager : $this->getMockBuilder('Doctrine\ODM\MongoDB\DocumentManager')
             ->disableOriginalConstructor()
             ->getMock();
-        $hydrator = new DoctrineObject($objectManager);
-
-        return $hydrator;
+        return new DoctrineObject($objectManager);
     }
 
     /**
      * @test
      */
-    public function it_should_be_initializable()
+    public function itShouldBeInitializable(): void
     {
         $hydrator = $this->createHydrator();
-        $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject', $hydrator);
+        $this->assertInstanceOf(DoctrineObject::class, $hydrator);
     }
 
     /**
      * @test
      */
-    public function it_should_be_a_doctrine_hydrator()
+    public function itShouldBeADoctrineHydrator(): void
     {
         $hydrator = $this->createHydrator();
-        $this->assertInstanceOf('DoctrineModule\Stdlib\Hydrator\DoctrineObject', $hydrator);
+        $this->assertInstanceOf(\Doctrine\Laminas\Hydrator\DoctrineObject::class, $hydrator);
     }
 
     /**
      * @test
      */
-    public function it_should_extract_a_document()
+    public function itShouldExtractADocument(): void
     {
         $creationDate = new \DateTime();
         $birthday = new \DateTime('1 january 2014');
@@ -102,7 +100,7 @@ class DoctrineObjectTest extends BaseTest
     /**
      * @test
      */
-    public function it_should_hydrate_a_document()
+    public function itShouldHydrateADocument(): void
     {
         $creationDate = new \DateTime();
         $birthday = new \DateTime('1 january 2014');
@@ -151,7 +149,7 @@ class DoctrineObjectTest extends BaseTest
      *
      * @return string
      */
-    protected function createReferenceOne($name)
+    protected function createReferenceOne($name): string
     {
         $embedded = new HydrationReferenceOne();
         $embedded->setName($name);
@@ -167,7 +165,7 @@ class DoctrineObjectTest extends BaseTest
      *
      * @return string
      */
-    protected function createReferenceMany($name)
+    protected function createReferenceMany($name): string
     {
         $embedded = new HydrationReferenceMany();
         $embedded->setName($name);

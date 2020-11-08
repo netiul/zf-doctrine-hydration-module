@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\ReferencedField;
@@ -15,7 +17,7 @@ class ReferencedFieldTest extends AbstractMongoStrategyTest
     /**
      * @return StrategyInterface
      */
-    protected function createStrategy()
+    protected function createStrategy(): StrategyInterface
     {
         return new ReferencedField();
     }
@@ -23,7 +25,7 @@ class ReferencedFieldTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_extract_referenced_fields()
+    public function itShouldExtractReferencedFields(): void
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -42,7 +44,7 @@ class ReferencedFieldTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_hydrate_referenced_fields()
+    public function itShouldHydrateReferencedFields(): void
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -63,7 +65,7 @@ class ReferencedFieldTest extends AbstractMongoStrategyTest
      *
      * @return string
      */
-    protected function createReference($name)
+    protected function createReference($name): string
     {
         $embedded = new HydrationReferenceOne();
         $embedded->setName($name);

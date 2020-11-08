@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\ReferencedCollection;
@@ -23,7 +25,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_extract_referenced_collections()
+    public function itShouldExtractReferencedCollections(): void
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -42,7 +44,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_hydrate_referenced_collections()
+    public function itShouldHydrateReferencedCollections(): void
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -64,7 +66,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
      *
      * @return string
      */
-    protected function createReference($name)
+    protected function createReference($name): string
     {
         $embedded = new HydrationReferenceMany();
         $embedded->setName($name);

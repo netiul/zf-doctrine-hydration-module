@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
+use Doctrine\Laminas\Hydrator\Strategy\AbstractCollectionStrategy;
+use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Tests\BaseTest;
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 use Laminas\Hydrator\Strategy\StrategyInterface;
+use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\AbstractMongoStrategy;
 
 /**
  * Class AbstractMongoStrategyTest.
@@ -15,16 +19,16 @@ abstract class AbstractMongoStrategyTest extends BaseTest
     /**
      * @return StrategyInterface
      */
-    abstract protected function createStrategy();
+    abstract protected function createStrategy(): StrategyInterface;
 
     /**
-     * @param $objectManager
-     * @param $object
-     * @param $fieldName
+     * @param DocumentManager $objectManager
+     * @param object $object
+     * @param string $fieldName
      *
      * @return StrategyInterface
      */
-    protected function getStrategy($objectManager, $object, $fieldName)
+    protected function getStrategy(DocumentManager $objectManager, object $object, string $fieldName): StrategyInterface
     {
         $objectClass = get_class($object);
         $metadata = $objectManager->getClassMetadata($objectClass);
@@ -41,34 +45,34 @@ abstract class AbstractMongoStrategyTest extends BaseTest
     /**
      * @test
      */
-    public function it_should_be_a_mongodb_strategy()
+    public function itShouldBeAMongodbStrategy(): void
     {
         $strategy = $this->createStrategy();
-        $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\AbstractMongoStrategy', $strategy);
+        $this->assertInstanceOf(AbstractMongoStrategy::class, $strategy);
     }
 
     /**
      * @test
      */
-    public function it_should_be_a_collection_strategy()
+    public function itShouldbeACollectionStrategy(): void
     {
         $strategy = $this->createStrategy();
-        $this->assertInstanceOf('DoctrineModule\Stdlib\Hydrator\Strategy\AbstractCollectionStrategy', $strategy);
+        $this->assertInstanceOf(AbstractCollectionStrategy::class, $strategy);
     }
 
     /**
      * @test
      */
-    public function it_should_know_an_object_manager()
+    public function itShouldknowAnObjectManager()
     {
         $strategy = $this->createStrategy();
-        $this->assertInstanceOf('DoctrineModule\Persistence\ObjectManagerAwareInterface', $strategy);
+        $this->assertInstanceOf(ObjectManagerAwareInterface::class, $strategy);
     }
 
     /**
      * @test
      */
-    public function it_should_have_an_object_manager()
+    public function itShouldHaveAnObjectManager()
     {
         $objectManager = $this->dm;
         $strategy = $this->createStrategy();

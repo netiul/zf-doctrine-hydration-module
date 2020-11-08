@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Hydrator;
 
 use Interop\Container\ContainerInterface;

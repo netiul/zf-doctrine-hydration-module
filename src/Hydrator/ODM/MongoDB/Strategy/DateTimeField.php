@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 
 use Laminas\Hydrator\Strategy\StrategyInterface;
+use MongoDB\BSON\UTCDateTime;
 
 /**
  * Class DateTimeField.
@@ -66,16 +67,15 @@ class DateTimeField implements StrategyInterface
             return clone $value;
         }
 
-        if ($value instanceof \MongoDate) {
-            $datetime = new \DateTime();
-            $datetime->setTimestamp($value->sec);
+        if ($value instanceof UTCDateTime) {
+            $datetime = $value->toDateTime();
 
             return $datetime;
         }
 
         if (is_numeric($value)) {
             $datetime = new \DateTime();
-            $datetime->setTimestamp($value);
+            $datetime->setTimestamp((int) $value);
 
             return $datetime;
         }
@@ -86,6 +86,6 @@ class DateTimeField implements StrategyInterface
             return $datetime;
         }
 
-        return;
+        return null;
     }
 }

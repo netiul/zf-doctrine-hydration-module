@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\EmbeddedReferenceCollection;

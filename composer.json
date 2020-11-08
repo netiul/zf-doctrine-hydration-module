@@ -4,8 +4,8 @@
   "description": "Doctrine hydrators for ZF2 and ZF3",
   "scripts": {
     "test": "phpunit",
-    "cs": "phpcs -q --report=checkstyle --no-colors",
-    "psalm": "psalm --long-progress --show-info=false --output-format=github"
+    "cs": "phpcs",
+    "psalm": "psalm --show-info=false"
   },
   "keywords": [
     "laminas",

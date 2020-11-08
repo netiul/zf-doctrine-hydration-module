@@ -83,12 +83,6 @@
     <MixedAssignment occurrences="1">
       <code>$this-&gt;isTimestamp</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>\DateTime|null</code>
-    </MixedInferredReturnType>
-    <UndefinedClass occurrences="1">
-      <code>\MongoDate</code>
-    </UndefinedClass>
   </file>
   <file src="src/Hydrator/ODM/MongoDB/Strategy/DefaultRelation.php">
     <MixedAssignment occurrences="1">
@@ -286,7 +280,7 @@
       <code>configureHydratorNamingStrategy</code>
       <code>configureHydratorStrategies</code>
     </MissingReturnType>
-    <MixedArgument occurrences="27">
+    <MixedArgument occurrences="22">
       <code>$config</code>
       <code>$config</code>
       <code>$config</code>
@@ -319,10 +313,8 @@
       <code>$field</code>
       <code>$name</code>
     </MixedArgumentTypeCoercion>
-    <MixedArrayAccess occurrences="6">
+    <MixedArrayAccess occurrences="4">
       <code>$config[$namespace]</code>
-      <code>$config['hydrator']</code>
-      <code>$config['hydrator']</code>
       <code>$config[self::FACTORY_NAMESPACE]</code>
       <code>$filterConfig['condition']</code>
       <code>$filterConfig['filter']</code>
@@ -537,12 +529,11 @@
     </MissingParamType>
   </file>
   <file src="test/src/Tests/Hydrator/DoctrineHydratorTest.php">
-    <ArgumentTypeCoercion occurrences="5">
+    <ArgumentTypeCoercion occurrences="2">
       <code>'Laminas\Hydrator\HydratorInterface'</code>
       <code>'Laminas\Hydrator\HydratorInterface'</code>
       <code>'Laminas\Hydrator\HydratorInterface'</code>
       <code>'Laminas\Hydrator\HydratorInterface'</code>
-      <code>'Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator'</code>
     </ArgumentTypeCoercion>
     <DocblockTypeContradiction occurrences="2">
       <code>$extractService</code>
@@ -553,14 +544,6 @@
       <code>$hydrateService</code>
       <code>$hydrateService</code>
     </InvalidArgument>
-    <MissingReturnType occurrences="6">
-      <code>it_should_be_initializable</code>
-      <code>it_should_extract_an_object</code>
-      <code>it_should_have_a_hydrator_service</code>
-      <code>it_should_have_an_extractor_service</code>
-      <code>it_should_hydrate_an_object</code>
-      <code>it_should_use_a_generated_doctrine_hydrator_while_hydrating_an_object</code>
-    </MissingReturnType>
     <RedundantConditionGivenDocblockType occurrences="2">
       <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
       <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
@@ -577,20 +560,7 @@
     </UndefinedClass>
   </file>
   <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/DateTimeFieldTest.php">
-    <ArgumentTypeCoercion occurrences="2">
-      <code>'Laminas\Hydrator\Strategy\StrategyInterface'</code>
-      <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DateTimeField'</code>
-    </ArgumentTypeCoercion>
-    <MissingReturnType occurrences="5">
-      <code>it_should_be_a_strategy_interface</code>
-      <code>it_should_be_initializable</code>
-      <code>it_should_extract_datetime</code>
-      <code>it_should_hydrate_datetime</code>
-      <code>it_should_hydrate_timestamps</code>
-    </MissingReturnType>
-    <MixedAssignment occurrences="3">
-      <code>$dateMongo</code>
-      <code>$dateMongo</code>
+    <MixedAssignment occurrences="1">
       <code>$result</code>
     </MixedAssignment>
     <MixedMethodCall occurrences="4">
@@ -609,10 +579,6 @@
       <code>hydrate</code>
       <code>hydrate</code>
     </TooFewArguments>
-    <UndefinedClass occurrences="2">
-      <code>\MongoDate</code>
-      <code>\MongoDate</code>
-    </UndefinedClass>
   </file>
   <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/DefaultRelationTest.php">
     <MissingDependency occurrences="1">
@@ -653,10 +619,6 @@
     <ArgumentTypeCoercion occurrences="1">
       <code>'Phpro\DoctrineHydrationModule\Module'</code>
     </ArgumentTypeCoercion>
-    <MissingReturnType occurrences="2">
-      <code>it_should_be_initializable</code>
-      <code>it_should_provide_configuration</code>
-    </MissingReturnType>
   </file>
   <file src="test/src/Tests/Service/DoctrineHydratorFactoryTest.php">
     <ArgumentTypeCoercion occurrences="11">
@@ -672,19 +634,6 @@
       <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject'</code>
       <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject'</code>
     </ArgumentTypeCoercion>
-    <MissingReturnType occurrences="11">
-      <code>it_should_be_an_abstract_factory</code>
-      <code>it_should_be_initializable</code>
-      <code>it_should_be_possible_to_configure_a_custom_hydrator</code>
-      <code>it_should_be_possible_to_configure_a_custom_hydrator_as_factory</code>
-      <code>it_should_be_possible_to_configure_a_naming_stategy</code>
-      <code>it_should_be_possible_to_configure_hydration_filters</code>
-      <code>it_should_be_possible_to_configure_hydration_stategies</code>
-      <code>it_should_create_a_custom_ODM_hydrator</code>
-      <code>it_should_create_a_custom_ODM_hydrator_which_uses_the_auto_generated_hydrators</code>
-      <code>it_should_create_a_custom_ORM_hydrator</code>
-      <code>it_should_know_which_services_it_can_create</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$this-&gt;serviceConfig</code>
     </MixedArgument>
@@ -709,8 +658,5 @@
       <code>hasNamingStrategy</code>
       <code>hasStrategy</code>
     </UndefinedInterfaceMethod>
-    <UnresolvableInclude occurrences="1">
-      <code>require TEST_BASE_PATH.'/config/module.config.php'</code>
-    </UnresolvableInclude>
   </file>
 </files>

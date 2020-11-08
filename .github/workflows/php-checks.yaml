@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         php-versions: ['7.3', '7.4'] # Mongodb extension is not ready for PHP 8 just yet
-    name: "Code Standards"
+    name: Code Style
     runs-on: ubuntu-18.04
     env:
       extensions: mongodb
@@ -36,7 +36,7 @@ jobs:
         run: composer install --prefer-source --no-suggest --no-interaction --no-progress --quiet
 
       - name: phpcs
-        run: composer cs | cs2pr
+        run: composer cs -- -q --report=checkstyle --no-colors | cs2pr
 
   psalm:
     strategy:
@@ -62,7 +62,7 @@ jobs:
 
       - name: Psalm
         timeout-minutes: 10
-        run: composer psalm
+        run: composer psalm -- --long-progress --output-format=github
 
   phpunit:
     strategy:

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
+use Laminas\Hydrator\Strategy\StrategyInterface;
+use MongoDB\BSON\UTCDateTime;
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DateTimeField;
 use PHPUnit\Framework\TestCase;
 
@@ -25,25 +27,26 @@ class DateTimeFieldTest extends TestCase
     /**
      * @test
      */
-    public function it_should_be_initializable()
+    public function itShouldBeInitializable(): void
     {
         $strategy = $this->createStrategy();
-        $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DateTimeField', $strategy);
+        /** @psalm-suppress RedundantConditionGivenDocblockType */
+        $this->assertInstanceOf(DateTimeField::class, $strategy);
     }
 
     /**
      * @test
      */
-    public function it_should_be_a_strategy_interface()
+    public function itShouldBeAStrategyInterface(): void
     {
         $strategy = $this->createStrategy();
-        $this->assertInstanceOf('Laminas\Hydrator\Strategy\StrategyInterface', $strategy);
+        $this->assertInstanceOf(StrategyInterface::class, $strategy);
     }
 
     /**
      * @test
      */
-    public function it_should_extract_datetime()
+    public function itShouldExtractDatetime(): void
     {
         $strategy = $this->createStrategy();
         $date = new \DateTime('1 january 2014');
@@ -55,10 +58,10 @@ class DateTimeFieldTest extends TestCase
     /**
      * @test
      */
-    public function it_should_hydrate_datetime()
+    public function itShouldHydrateDatetime(): void
     {
         $date = new \DateTime('1 january 2014');
-        $dateMongo = new \MongoDate($date->getTimestamp());
+        $dateMongo = new UTCDateTime($date->getTimestamp());
         $dateInt = $date->getTimestamp();
         $dateString = $date->format('Y-m-d');
 
@@ -69,10 +72,13 @@ class DateTimeFieldTest extends TestCase
         $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateString)->getTimestamp());
     }
 
-    public function it_should_hydrate_timestamps()
+    /**
+     * @test
+     */
+    public function itShouldHydrateTimestamps(): void
     {
         $date = new \DateTime('1 january 2014');
-        $dateMongo = new \MongoDate($date->getTimestamp());
+        $dateMongo = new UTCDateTime($date->getTimestamp());
         $dateInt = $date->getTimestamp();
         $dateString = $date->format('Y-m-d');
 

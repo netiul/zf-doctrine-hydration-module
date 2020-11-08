@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DefaultRelation as StrategyDefaultRelation;
@@ -15,7 +17,7 @@ class DefaultRelationTest extends AbstractMongoStrategyTest
     /**
      * @return StrategyInterface
      */
-    protected function createStrategy()
+    protected function createStrategy(): StrategyInterface
     {
         return new StrategyDefaultRelation();
     }
@@ -23,7 +25,7 @@ class DefaultRelationTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_extract_embedded_collections()
+    public function itShouldExtractEmbeddedCollections(): void
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -42,7 +44,7 @@ class DefaultRelationTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_hydrate_embedded_collections()
+    public function itShouldHydrateEmbeddedCollections(): void
     {
         $user = new HydrationUser();
         $user->setId(1);

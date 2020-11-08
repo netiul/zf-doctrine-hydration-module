@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\EmbeddedField;
@@ -23,7 +25,7 @@ class EmbeddedFieldTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_not_break_when_embed_field_not_set()
+    public function itShouldNotBreakWhenEmbedFieldNotSet()
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -40,7 +42,7 @@ class EmbeddedFieldTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_extract_embedded_fields()
+    public function itShouldExtractEmbeddedFields()
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -59,7 +61,7 @@ class EmbeddedFieldTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_hydrate_embedded_fields()
+    public function itShouldHydrateEmbeddedFields()
     {
         $user = new HydrationUser();
         $user->setId(1);
