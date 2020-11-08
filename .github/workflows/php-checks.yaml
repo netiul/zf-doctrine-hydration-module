@@ -16,7 +16,7 @@ jobs:
   coding-standards:
     strategy:
       matrix:
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['7.3', '7.4'] # Mongodb extension is not ready for PHP 8 just yet
     name: "Code Standards"
     runs-on: ubuntu-18.04
     env:
@@ -41,7 +41,7 @@ jobs:
   psalm:
     strategy:
       matrix:
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['7.3', '7.4'] # Mongodb extension is not ready for PHP 8 just yet
     name: Psalm
     runs-on: ubuntu-18.04
     env:
@@ -67,9 +67,9 @@ jobs:
   phpunit:
     strategy:
       matrix:
-        php-versions: [ '7.3', '7.4', '8.0' ]
+        php-versions: [ '7.3', '7.4'] # Mongodb extension is not ready for PHP 8 just yet
         mongodb-version: [ '4.2' ]
-    name: Psalm
+    name: Unit Tests
     runs-on: ubuntu-18.04
     env:
       extensions: mongodb
