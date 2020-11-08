@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.1.1@16bfbd9224698bd738c665f33039fade2a1a3977">
+  <file src="src/Hydrator/DoctrineHydrator.php">
+    <InvalidArgument occurrences="2">
+      <code>$data</code>
+      <code>$object</code>
+    </InvalidArgument>
+    <MissingParamType occurrences="2">
+      <code>$extractService</code>
+      <code>$hydrateService</code>
+    </MissingParamType>
+    <MixedAssignment occurrences="2">
+      <code>$this-&gt;extractService</code>
+      <code>$this-&gt;hydrateService</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>object</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;hydrateService-&gt;hydrate($data, $object)</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/DoctrineObject.php">
+    <MissingParamType occurrences="2">
+      <code>$association</code>
+      <code>$strategy</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="3">
+      <code>injectAssociationStrategyDependencies</code>
+      <code>prepareAssociationStrategies</code>
+      <code>prepareFieldStrategies</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$association</code>
+      <code>$collectionName</code>
+      <code>$values</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="3">
+      <code>$fieldMeta['type']</code>
+      <code>$fieldMeta['type']</code>
+      <code>$this-&gt;metadata-&gt;fieldMappings[$association]</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="2">
+      <code>$fieldMeta</code>
+      <code>$fieldMeta</code>
+    </MixedAssignment>
+    <NoInterfaceProperties occurrences="2">
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+    </NoInterfaceProperties>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>DoctrineObject</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/AbstractMongoStrategy.php">
+    <InvalidNullableReturnType occurrences="1">
+      <code>object</code>
+    </InvalidNullableReturnType>
+    <MissingParamType occurrences="3">
+      <code>$targetDocument</code>
+      <code>$targetId</code>
+      <code>$value</code>
+    </MissingParamType>
+    <MixedArgument occurrences="1">
+      <code>$targetDocument</code>
+    </MixedArgument>
+    <NullableReturnStatement occurrences="1">
+      <code>$document</code>
+    </NullableReturnStatement>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>$objectManager</code>
+      <code>AbstractMongoStrategy</code>
+      <code>AbstractMongoStrategy</code>
+      <code>AbstractMongoStrategy</code>
+      <code>AbstractMongoStrategy</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/DateTimeField.php">
+    <MissingParamType occurrences="2">
+      <code>$isTimestamp</code>
+      <code>$value</code>
+    </MissingParamType>
+    <MixedAssignment occurrences="1">
+      <code>$this-&gt;isTimestamp</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>\DateTime|null</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="1">
+      <code>\MongoDate</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/DefaultRelation.php">
+    <MixedAssignment occurrences="1">
+      <code>$value</code>
+    </MixedAssignment>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>DefaultRelation</code>
+      <code>DefaultRelation</code>
+      <code>DefaultRelation</code>
+      <code>DefaultRelation</code>
+      <code>DefaultRelation</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/EmbeddedCollection.php">
+    <MissingParamType occurrences="2">
+      <code>$document</code>
+      <code>$targetDocument</code>
+    </MissingParamType>
+    <MixedArgument occurrences="3">
+      <code>$document</code>
+      <code>$mapping['discriminatorMap']</code>
+      <code>$targetDocument</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="2">
+      <code>$object</code>
+      <code>$object</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess occurrences="6">
+      <code>$discriminatorMap[$data[$discriminator]]</code>
+      <code>$mapping ['discriminatorField']</code>
+      <code>$mapping['discriminatorField']</code>
+      <code>$mapping['discriminatorMap']</code>
+      <code>$mapping['discriminatorMap']</code>
+      <code>$mapping['targetDocument']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="5">
+      <code>$data[$discriminator]</code>
+      <code>$discriminatorMap[$data[$discriminator]]</code>
+      <code>$discriminatorMap[$data[$discriminator]]</code>
+      <code>$result[$index][$mapping['discriminatorField']]</code>
+      <code>$result[$key]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="10">
+      <code>$data</code>
+      <code>$discriminator</code>
+      <code>$discriminatorMap</code>
+      <code>$discriminatorName</code>
+      <code>$key</code>
+      <code>$mapping</code>
+      <code>$mapping</code>
+      <code>$result[$index][$mapping['discriminatorField']]</code>
+      <code>$targetDocument</code>
+      <code>$targetDocument</code>
+    </MixedAssignment>
+    <NoInterfaceProperties occurrences="2">
+      <code>$this-&gt;getClassMetadata()-&gt;fieldMappings</code>
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+    </NoInterfaceProperties>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>EmbeddedCollection</code>
+      <code>EmbeddedCollection</code>
+      <code>EmbeddedCollection</code>
+      <code>EmbeddedCollection</code>
+      <code>EmbeddedCollection</code>
+    </PropertyNotSetInConstructor>
+    <RedundantCondition occurrences="1">
+      <code>$value</code>
+    </RedundantCondition>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/EmbeddedField.php">
+    <MixedArgument occurrences="2">
+      <code>$targetDocument</code>
+      <code>$value</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="1">
+      <code>$mapping['targetDocument']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="2">
+      <code>$mapping</code>
+      <code>$targetDocument</code>
+    </MixedAssignment>
+    <NoInterfaceProperties occurrences="1">
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+    </NoInterfaceProperties>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>EmbeddedField</code>
+      <code>EmbeddedField</code>
+      <code>EmbeddedField</code>
+      <code>EmbeddedField</code>
+      <code>EmbeddedField</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/EmbeddedReferenceCollection.php">
+    <MixedArgument occurrences="1">
+      <code>$value</code>
+    </MixedArgument>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>EmbeddedReferenceCollection</code>
+      <code>EmbeddedReferenceCollection</code>
+      <code>EmbeddedReferenceCollection</code>
+      <code>EmbeddedReferenceCollection</code>
+      <code>EmbeddedReferenceCollection</code>
+    </PropertyNotSetInConstructor>
+    <TooFewArguments occurrences="1">
+      <code>hydrate</code>
+    </TooFewArguments>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/EmbeddedReferenceField.php">
+    <MixedArgument occurrences="1">
+      <code>$value</code>
+    </MixedArgument>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>EmbeddedReferenceField</code>
+      <code>EmbeddedReferenceField</code>
+      <code>EmbeddedReferenceField</code>
+      <code>EmbeddedReferenceField</code>
+      <code>EmbeddedReferenceField</code>
+    </PropertyNotSetInConstructor>
+    <TooFewArguments occurrences="1">
+      <code>hydrate</code>
+    </TooFewArguments>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/ReferencedCollection.php">
+    <MissingParamType occurrences="2">
+      <code>$document</code>
+      <code>$targetDocument</code>
+    </MissingParamType>
+    <MixedArgument occurrences="1">
+      <code>$record</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="1">
+      <code>$mapping['targetDocument']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="1">
+      <code>$result[$key]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="6">
+      <code>$documentId</code>
+      <code>$key</code>
+      <code>$mapping</code>
+      <code>$record</code>
+      <code>$result[$key]</code>
+      <code>$targetDocument</code>
+    </MixedAssignment>
+    <NoInterfaceProperties occurrences="1">
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+    </NoInterfaceProperties>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>ReferencedCollection</code>
+      <code>ReferencedCollection</code>
+      <code>ReferencedCollection</code>
+      <code>ReferencedCollection</code>
+      <code>ReferencedCollection</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Hydrator/ODM/MongoDB/Strategy/ReferencedField.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>$idField</code>
+    </DocblockTypeContradiction>
+    <MixedArgument occurrences="1">
+      <code>$idField</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="1">
+      <code>$mapping['targetDocument']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="3">
+      <code>$idField</code>
+      <code>$mapping</code>
+      <code>$targetDocument</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>$getter</code>
+    </MixedMethodCall>
+    <NoInterfaceProperties occurrences="1">
+      <code>$this-&gt;metadata-&gt;fieldMappings</code>
+    </NoInterfaceProperties>
+    <PropertyNotSetInConstructor occurrences="5">
+      <code>ReferencedField</code>
+      <code>ReferencedField</code>
+      <code>ReferencedField</code>
+      <code>ReferencedField</code>
+      <code>ReferencedField</code>
+    </PropertyNotSetInConstructor>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>is_array($idField)</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/Service/DoctrineHydratorFactory.php">
+    <MissingParamType occurrences="1">
+      <code>$objectManager</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="4">
+      <code>configureHydrator</code>
+      <code>configureHydratorFilters</code>
+      <code>configureHydratorNamingStrategy</code>
+      <code>configureHydratorStrategies</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="27">
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config['by_value']</code>
+      <code>$config['by_value']</code>
+      <code>$config['hydrator']</code>
+      <code>$config['object_manager']</code>
+      <code>$config['object_manager']</code>
+      <code>$extractService</code>
+      <code>$filterService</code>
+      <code>$filterService</code>
+      <code>$filterService</code>
+      <code>$filterService</code>
+      <code>$hydrateService</code>
+      <code>$namingStrategy</code>
+      <code>$namingStrategyKey</code>
+      <code>$namingStrategyKey</code>
+      <code>$namingStrategyKey</code>
+      <code>$objectManager</code>
+      <code>$strategy</code>
+      <code>$strategyKey</code>
+      <code>$strategyKey</code>
+      <code>$strategyKey</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="2">
+      <code>$field</code>
+      <code>$name</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess occurrences="6">
+      <code>$config[$namespace]</code>
+      <code>$config['hydrator']</code>
+      <code>$config['hydrator']</code>
+      <code>$config[self::FACTORY_NAMESPACE]</code>
+      <code>$filterConfig['condition']</code>
+      <code>$filterConfig['filter']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="1">
+      <code>$conditionMap[$filterConfig['condition']]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="17">
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$extractService</code>
+      <code>$extractService</code>
+      <code>$extractService</code>
+      <code>$filterConfig</code>
+      <code>$filterService</code>
+      <code>$filterService</code>
+      <code>$hydrateService</code>
+      <code>$hydrateService</code>
+      <code>$hydrator</code>
+      <code>$hydratorFactory</code>
+      <code>$namingStrategyKey</code>
+      <code>$strategy</code>
+      <code>$strategyKey</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="3">
+      <code>ObjectManager</code>
+      <code>bool</code>
+      <code>null|HydratorInterface</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>getHydratorFor</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="3">
+      <code>$container-&gt;get($config['object_manager'])</code>
+      <code>$hydrator</code>
+      <code>$this-&gt;lookupCache[$requestedName]</code>
+    </MixedReturnStatement>
+    <UndefinedInterfaceMethod occurrences="2">
+      <code>build</code>
+      <code>getHydratorFactory</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="test/src/Bootstrap.php">
+    <MissingParamType occurrences="1">
+      <code>$autoLoader</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="3">
+      <code>configureDoctrineODM</code>
+      <code>init</code>
+      <code>initAutoLoading</code>
+    </MissingReturnType>
+    <MixedAssignment occurrences="2">
+      <code>$autoLoader</code>
+      <code>$this-&gt;autoLoader</code>
+    </MixedAssignment>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationEmbedMany.php">
+    <MissingPropertyType occurrences="2">
+      <code>$id</code>
+      <code>$name</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="2">
+      <code>setId</code>
+      <code>setName</code>
+    </MissingReturnType>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationEmbedOne.php">
+    <MissingPropertyType occurrences="2">
+      <code>$id</code>
+      <code>$name</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="2">
+      <code>setId</code>
+      <code>setName</code>
+    </MissingReturnType>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationReferenceMany.php">
+    <MissingPropertyType occurrences="2">
+      <code>$id</code>
+      <code>$name</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="2">
+      <code>setId</code>
+      <code>setName</code>
+    </MissingReturnType>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationReferenceOne.php">
+    <MissingPropertyType occurrences="2">
+      <code>$id</code>
+      <code>$name</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="2">
+      <code>setId</code>
+      <code>setName</code>
+    </MissingReturnType>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationUser.php">
+    <InvalidPropertyAssignmentValue occurrences="3">
+      <code>$createdAt</code>
+      <code>$now-&gt;getTimestamp()</code>
+      <code>[]</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidReturnStatement occurrences="1">
+      <code>$this-&gt;createdAt</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>int</code>
+    </InvalidReturnType>
+    <MissingParamType occurrences="4">
+      <code>$embedMany</code>
+      <code>$embedMany</code>
+      <code>$referenceMany</code>
+      <code>$referenceMany</code>
+    </MissingParamType>
+    <MissingPropertyType occurrences="4">
+      <code>$embedOne</code>
+      <code>$id</code>
+      <code>$name</code>
+      <code>$referenceOne</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="12">
+      <code>addEmbedMany</code>
+      <code>addReferenceMany</code>
+      <code>removeEmbedMany</code>
+      <code>removeReferenceMany</code>
+      <code>setBirthday</code>
+      <code>setCreatedAt</code>
+      <code>setEmbedMany</code>
+      <code>setEmbedOne</code>
+      <code>setId</code>
+      <code>setName</code>
+      <code>setReferenceMany</code>
+      <code>setReferenceOne</code>
+    </MissingReturnType>
+    <MixedAssignment occurrences="6">
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$this-&gt;birthday</code>
+      <code>$this-&gt;embedMany</code>
+    </MixedAssignment>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$birthday</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/src/Fixtures/ODM/MongoDb/HydrationUserWithAssocEmbedMany.php">
+    <InvalidPropertyAssignmentValue occurrences="3">
+      <code>$createdAt</code>
+      <code>$now-&gt;getTimestamp()</code>
+      <code>[]</code>
+    </InvalidPropertyAssignmentValue>
+    <InvalidReturnStatement occurrences="1">
+      <code>$this-&gt;createdAt</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="1">
+      <code>int</code>
+    </InvalidReturnType>
+    <MissingParamType occurrences="4">
+      <code>$embedMany</code>
+      <code>$embedMany</code>
+      <code>$referenceMany</code>
+      <code>$referenceMany</code>
+    </MissingParamType>
+    <MissingPropertyType occurrences="4">
+      <code>$embedOne</code>
+      <code>$id</code>
+      <code>$name</code>
+      <code>$referenceOne</code>
+    </MissingPropertyType>
+    <MissingReturnType occurrences="12">
+      <code>addEmbedMany</code>
+      <code>addReferenceMany</code>
+      <code>removeEmbedMany</code>
+      <code>removeReferenceMany</code>
+      <code>setBirthday</code>
+      <code>setCreatedAt</code>
+      <code>setEmbedMany</code>
+      <code>setEmbedOne</code>
+      <code>setId</code>
+      <code>setName</code>
+      <code>setReferenceMany</code>
+      <code>setReferenceOne</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$key</code>
+      <code>$key</code>
+      <code>$key</code>
+      <code>$key</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="10">
+      <code>$key</code>
+      <code>$key</code>
+      <code>$key</code>
+      <code>$key</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$record</code>
+      <code>$this-&gt;birthday</code>
+      <code>$this-&gt;embedMany</code>
+    </MixedAssignment>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$birthday</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="test/src/Hydrator/CustomBuildHydratorFactory.php">
+    <MissingParamType occurrences="1">
+      <code>$requestedName</code>
+    </MissingParamType>
+  </file>
+  <file src="test/src/Tests/Hydrator/DoctrineHydratorTest.php">
+    <ArgumentTypeCoercion occurrences="5">
+      <code>'Laminas\Hydrator\HydratorInterface'</code>
+      <code>'Laminas\Hydrator\HydratorInterface'</code>
+      <code>'Laminas\Hydrator\HydratorInterface'</code>
+      <code>'Laminas\Hydrator\HydratorInterface'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator'</code>
+    </ArgumentTypeCoercion>
+    <DocblockTypeContradiction occurrences="2">
+      <code>$extractService</code>
+      <code>$hydrateService</code>
+    </DocblockTypeContradiction>
+    <InvalidArgument occurrences="3">
+      <code>$extractService</code>
+      <code>$hydrateService</code>
+      <code>$hydrateService</code>
+    </InvalidArgument>
+    <MissingReturnType occurrences="6">
+      <code>it_should_be_initializable</code>
+      <code>it_should_extract_an_object</code>
+      <code>it_should_have_a_hydrator_service</code>
+      <code>it_should_have_an_extractor_service</code>
+      <code>it_should_hydrate_an_object</code>
+      <code>it_should_use_a_generated_doctrine_hydrator_while_hydrating_an_object</code>
+    </MissingReturnType>
+    <RedundantConditionGivenDocblockType occurrences="2">
+      <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
+      <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/DoctrineObjectTest.php">
+    <UndefinedClass occurrences="1">
+      <code>BaseTest</code>
+    </UndefinedClass>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/AbstractMongoStrategyTest.php">
+    <UndefinedClass occurrences="1">
+      <code>BaseTest</code>
+    </UndefinedClass>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/DateTimeFieldTest.php">
+    <ArgumentTypeCoercion occurrences="2">
+      <code>'Laminas\Hydrator\Strategy\StrategyInterface'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DateTimeField'</code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType occurrences="5">
+      <code>it_should_be_a_strategy_interface</code>
+      <code>it_should_be_initializable</code>
+      <code>it_should_extract_datetime</code>
+      <code>it_should_hydrate_datetime</code>
+      <code>it_should_hydrate_timestamps</code>
+    </MissingReturnType>
+    <MixedAssignment occurrences="3">
+      <code>$dateMongo</code>
+      <code>$dateMongo</code>
+      <code>$result</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="4">
+      <code>getTimestamp</code>
+      <code>getTimestamp</code>
+      <code>getTimestamp</code>
+      <code>getTimestamp</code>
+    </MixedMethodCall>
+    <TooFewArguments occurrences="8">
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+      <code>hydrate</code>
+    </TooFewArguments>
+    <UndefinedClass occurrences="2">
+      <code>\MongoDate</code>
+      <code>\MongoDate</code>
+    </UndefinedClass>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/DefaultRelationTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/EmbeddedCollectionTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/EmbeddedFieldTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/EmbeddedReferenceCollectionTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/EmbeddedReferenceFieldTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/ReferencedCollectionTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/ReferencedFieldTest.php">
+    <MissingDependency occurrences="1">
+      <code>AbstractMongoStrategyTest</code>
+    </MissingDependency>
+  </file>
+  <file src="test/src/Tests/ModuleTest.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>'Phpro\DoctrineHydrationModule\Module'</code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType occurrences="2">
+      <code>it_should_be_initializable</code>
+      <code>it_should_provide_configuration</code>
+    </MissingReturnType>
+  </file>
+  <file src="test/src/Tests/Service/DoctrineHydratorFactoryTest.php">
+    <ArgumentTypeCoercion occurrences="11">
+      <code>$objectManagerClass</code>
+      <code>'Doctrine\Laminas\Hydrator\DoctrineObject'</code>
+      <code>'Doctrine\Laminas\Hydrator\DoctrineObject'</code>
+      <code>'Doctrine\ODM\MongoDB\Hydrator\HydratorFactory'</code>
+      <code>'Doctrine\ODM\MongoDB\Hydrator\HydratorInterface'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject'</code>
+      <code>'Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject'</code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType occurrences="11">
+      <code>it_should_be_an_abstract_factory</code>
+      <code>it_should_be_initializable</code>
+      <code>it_should_be_possible_to_configure_a_custom_hydrator</code>
+      <code>it_should_be_possible_to_configure_a_custom_hydrator_as_factory</code>
+      <code>it_should_be_possible_to_configure_a_naming_stategy</code>
+      <code>it_should_be_possible_to_configure_hydration_filters</code>
+      <code>it_should_be_possible_to_configure_hydration_stategies</code>
+      <code>it_should_create_a_custom_ODM_hydrator</code>
+      <code>it_should_create_a_custom_ODM_hydrator_which_uses_the_auto_generated_hydrators</code>
+      <code>it_should_create_a_custom_ORM_hydrator</code>
+      <code>it_should_know_which_services_it_can_create</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$this-&gt;serviceConfig</code>
+    </MixedArgument>
+    <MixedArrayAssignment occurrences="3">
+      <code>$this-&gt;serviceConfig['doctrine-hydrator']['custom-hydrator']</code>
+      <code>$this-&gt;serviceConfig['doctrine-hydrator']['custom-hydrator']</code>
+      <code>$this-&gt;serviceConfig['doctrine-hydrator']['custom-hydrator']</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="1">
+      <code>$this-&gt;serviceConfig</code>
+    </MixedAssignment>
+    <RedundantCondition occurrences="1">
+      <code>assertInstanceOf</code>
+    </RedundantCondition>
+    <UndefinedConstant occurrences="1">
+      <code>TEST_BASE_PATH</code>
+    </UndefinedConstant>
+    <UndefinedInterfaceMethod occurrences="5">
+      <code>getNamingStrategy</code>
+      <code>getStrategy</code>
+      <code>hasFilter</code>
+      <code>hasNamingStrategy</code>
+      <code>hasStrategy</code>
+    </UndefinedInterfaceMethod>
+    <UnresolvableInclude occurrences="1">
+      <code>require TEST_BASE_PATH.'/config/module.config.php'</code>
+    </UnresolvableInclude>
+  </file>
+</files>

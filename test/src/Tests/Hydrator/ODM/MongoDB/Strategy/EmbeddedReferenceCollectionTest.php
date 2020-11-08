@@ -5,7 +5,7 @@ namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\EmbeddedReferenceCollection;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationReferenceMany;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationUser;
-use Zend\Hydrator\Strategy\StrategyInterface;
+use Laminas\Hydrator\Strategy\StrategyInterface;
 
 /**
  * Class EmbeddedReferenceCollectionTest.
@@ -23,7 +23,7 @@ class EmbeddedReferenceCollectionTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_extract_embedded_collections()
+    public function itShouldExtractEmbeddedCollections()
     {
         $user = new HydrationUser();
         $user->setId(1);
@@ -32,7 +32,7 @@ class EmbeddedReferenceCollectionTest extends AbstractMongoStrategyTest
         $referenced = new HydrationReferenceMany();
         $referenced->setId(1);
         $referenced->setName('name');
-        $user->addReferenceMany(array($referenced));
+        $user->addReferenceMany([$referenced]);
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceMany');
         $result = $strategy->extract($user->getReferenceMany());
@@ -42,14 +42,14 @@ class EmbeddedReferenceCollectionTest extends AbstractMongoStrategyTest
     /**
      * @test
      */
-    public function it_should_hydrate_referenced_collections()
+    public function itShouldHydrateReferencedCollections()
     {
         $user = new HydrationUser();
         $user->setId(1);
         $user->setName('username');
 
         $id = $this->createReference('name');
-        $data = array($id);
+        $data = [$id];
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceMany');
         $strategy->hydrate($data);

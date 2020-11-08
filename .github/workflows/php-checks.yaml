@@ -1,0 +1,100 @@
+name: PHP Checks
+
+on:
+  push:
+    paths:
+      - '**.php'
+      - 'composer.*'
+    branches:
+      - master
+  pull_request:
+    paths:
+      - '**.php'
+      - 'composer.*'
+
+jobs:
+  coding-standards:
+    strategy:
+      matrix:
+        php-versions: ['7.3', '7.4', '8.0']
+    name: "Code Standards"
+    runs-on: ubuntu-18.04
+    env:
+      extensions: mongodb
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          tools: composer, cs2pr
+
+      - name: Install Dependencies
+        run: composer install --prefer-source --no-suggest --no-interaction --no-progress --quiet
+
+      - name: phpcs
+        run: composer cs | cs2pr
+
+  psalm:
+    strategy:
+      matrix:
+        php-versions: ['7.3', '7.4', '8.0']
+    name: Psalm
+    runs-on: ubuntu-18.04
+    env:
+      extensions: mongodb
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          tools: pecl
+
+      - name: Install Dependencies
+        run: composer install --no-suggest --no-interaction --prefer-source --no-progress --quiet
+
+      - name: Psalm
+        timeout-minutes: 10
+        run: composer pslam
+
+  phpunit:
+    strategy:
+      matrix:
+        php-versions: [ '7.3', '7.4', '8.0' ]
+        mongodb-version: [ '4.2' ]
+    name: Psalm
+    runs-on: ubuntu-18.04
+    env:
+      extensions: mongodb
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          tools: pecl
+
+      - name: Start MongoDB
+          uses: supercharge/mongodb-github-action@1.3.0
+          with:
+            mongodb-version: ${{ matrix.mongodb-version }}
+
+      - name: Install Dependencies
+        run: composer install --no-suggest --no-interaction --prefer-dist --no-progress --quiet
+
+      - name: Setup problem matchers for PHPUnit
+        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: PHP Unit
+        timeout-minutes: 10
+        run: composer test

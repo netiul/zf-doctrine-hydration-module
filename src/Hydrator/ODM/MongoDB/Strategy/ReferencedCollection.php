@@ -1,8 +1,8 @@
 <?php
 
-namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
+declare(strict_types=1);
 
-use Doctrine\Common\Collections\Collection;
+namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 
 /**
  *
@@ -11,17 +11,15 @@ use Doctrine\Common\Collections\Collection;
 class ReferencedCollection extends AbstractMongoStrategy
 {
     /**
-     * @param mixed $value
-     *
-     * @return mixed
+     * {@inheritDoc}
      */
-    public function extract($value)
+    public function extract($value, ?object $object = null)
     {
         $strategy = new ReferencedField($this->getObjectManager());
         $strategy->setClassMetadata($this->getClassMetadata());
         $strategy->setCollectionName($this->getCollectionName());
 
-        $result = array();
+        $result = [];
         if ($value) {
             foreach ($value as $key => $record) {
                 $strategy->setObject($record);
@@ -33,16 +31,14 @@ class ReferencedCollection extends AbstractMongoStrategy
     }
 
     /**
-     * @param mixed $value
-     *
-     * @return array|Collection|mixed
+     * @inheritDoc
      */
-    public function hydrate($value)
+    public function hydrate($value, $data)
     {
         $mapping = $this->metadata->fieldMappings[$this->collectionName];
         $targetDocument = $mapping['targetDocument'];
 
-        $result = array();
+        $result = [];
         if ($value) {
             foreach ($value as $documentId) {
                 $result[] = $this->hydrateSingle($targetDocument, $documentId);

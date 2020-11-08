@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB;
 
 use Doctrine\ODM\MongoDB\Tests\BaseTest;
@@ -70,7 +72,7 @@ class DoctrineObjectTest extends BaseTest
         $embedMany = new HydrationEmbedMany();
         $embedMany->setId(1);
         $embedMany->setName('name');
-        $user->addEmbedMany(array($embedMany));
+        $user->addEmbedMany([$embedMany]);
 
         $referenceOne = new HydrationReferenceOne();
         $referenceOne->setId(1);
@@ -80,7 +82,7 @@ class DoctrineObjectTest extends BaseTest
         $referenceMany = new HydrationEmbedMany();
         $referenceMany->setId(1);
         $referenceMany->setName('name');
-        $user->addReferenceMany(array($referenceMany));
+        $user->addReferenceMany([$referenceMany]);
 
         $hydrator = new DoctrineObject($this->dm);
         $result = $hydrator->extract($user);
@@ -106,24 +108,24 @@ class DoctrineObjectTest extends BaseTest
         $birthday = new \DateTime('1 january 2014');
 
         $user = new HydrationUser();
-        $data = array(
+        $data = [
             'id' => 1,
             'name' => 'user',
             'creationDate' => $creationDate->getTimestamp(),
             'birthday' => $birthday->getTimestamp(),
             'referenceOne' => $this->createReferenceOne('name'),
-            'referenceMany' => array($this->createReferenceMany('name')),
-            'embedOne' => array(
+            'referenceMany' => [$this->createReferenceMany('name')],
+            'embedOne' => [
                 'id' => 1,
                 'name' => 'name',
-            ),
-            'embedMany' => array(
-                array(
+            ],
+            'embedMany' => [
+                [
                     'id' => 1,
                     'name' => 'name',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         $hydrator = new DoctrineObject($this->dm);
         $hydrator->hydrate($data, $user);

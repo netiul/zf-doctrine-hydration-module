@@ -5,7 +5,7 @@ namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator\ODM\MongoDB\Strategy;
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\ReferencedCollection;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationReferenceMany;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationUser;
-use Zend\Hydrator\Strategy\StrategyInterface;
+use Laminas\Hydrator\Strategy\StrategyInterface;
 
 /**
  * Class ReferencedCollectionTest.
@@ -32,7 +32,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
         $referenced = new HydrationReferenceMany();
         $referenced->setId(1);
         $referenced->setName('name');
-        $user->addReferenceMany(array($referenced));
+        $user->addReferenceMany([$referenced]);
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceMany');
         $result = $strategy->extract($user->getReferenceMany());
@@ -49,7 +49,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
         $user->setName('username');
 
         $id = $this->createReference('name');
-        $data = array($id);
+        $data = [$id];
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceMany');
         $strategy->hydrate($data);

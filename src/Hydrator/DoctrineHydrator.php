@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phpro\DoctrineHydrationModule\Hydrator;
 
-use Zend\Hydrator\HydratorInterface;
+use Laminas\Hydrator\HydratorInterface;
+use Doctrine\ODM\MongoDB\Hydrator\HydratorInterface as DoctrineHydratorInterface;
 
 /**
  * Class DoctrineHydrator.
@@ -15,7 +18,7 @@ class DoctrineHydrator implements HydratorInterface
     protected $extractService;
 
     /**
-     * @var HydratorInterface
+     * @var HydratorInterface|DoctrineHydratorInterface
      */
     protected $hydrateService;
 
@@ -30,7 +33,7 @@ class DoctrineHydrator implements HydratorInterface
     }
 
     /**
-     * @return \Zend\Hydrator\HydratorInterface
+     * @return HydratorInterface
      */
     public function getExtractService()
     {
@@ -38,7 +41,7 @@ class DoctrineHydrator implements HydratorInterface
     }
 
     /**
-     * @return \Zend\Hydrator\HydratorInterface
+     * @return HydratorInterface|DoctrineHydratorInterface
      */
     public function getHydrateService()
     {
@@ -52,7 +55,7 @@ class DoctrineHydrator implements HydratorInterface
      *
      * @return array
      */
-    public function extract($object)
+    public function extract($object): array
     {
         return $this->extractService->extract($object);
     }
@@ -65,14 +68,16 @@ class DoctrineHydrator implements HydratorInterface
      *
      * @return object
      */
-    public function hydrate(array $data, $object)
+    public function hydrate(array $data, object $object)
     {
-        // Zend hydrator:
+        // Laminas hydrator:
         if ($this->hydrateService instanceof HydratorInterface) {
             return $this->hydrateService->hydrate($data, $object);
         }
 
         // Doctrine hydrator: (parameters switched)
-        return $this->hydrateService->hydrate($object, $data);
+        $this->hydrateService->hydrate($object, $data);
+
+        return $object;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
+declare(strict_types=1);
 
-use Doctrine\Common\Collections\Collection;
+namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 
 /**
  * Class PersistentCollection.
@@ -10,13 +10,9 @@ use Doctrine\Common\Collections\Collection;
 class EmbeddedReferenceCollection extends AbstractMongoStrategy
 {
     /**
-     * @param mixed $value
-     *
-     * @return array|mixed
-     *
-     * @throws \Exception
+     * {@inheritDoc}
      */
-    public function extract($value)
+    public function extract($value, ?object $object = null)
     {
         if (!$value) {
             return $value;
@@ -31,11 +27,9 @@ class EmbeddedReferenceCollection extends AbstractMongoStrategy
     }
 
     /**
-     * @param mixed $value
-     *
-     * @return array|Collection|mixed
+     * @inheritDoc
      */
-    public function hydrate($value)
+    public function hydrate($value, $data)
     {
         $strategy = new ReferencedCollection($this->getObjectManager());
         $strategy->setClassMetadata($this->getClassMetadata());

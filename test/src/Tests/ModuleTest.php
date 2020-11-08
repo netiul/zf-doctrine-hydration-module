@@ -25,6 +25,6 @@ class ModuleTest extends TestCase
     public function it_should_provide_configuration()
     {
         $module = new Module();
-        $this->assertInternalType('array', $module->getConfig());
+        $this->assertIsArray($module->getConfig());
     }
 }

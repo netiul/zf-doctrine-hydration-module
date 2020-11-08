@@ -2,11 +2,17 @@
 
 namespace PhproTest\DoctrineHydrationModule\Tests\Service;
 
+use Laminas\Hydrator\ArraySerializableHydrator;
+use Laminas\Hydrator\Filter\FilterInterface;
+use Laminas\Hydrator\NamingStrategy\NamingStrategyInterface;
+use Laminas\Hydrator\Strategy\StrategyInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 use PhproTest\DoctrineHydrationModule\Hydrator\CustomBuildHydratorFactory;
 use Phpro\DoctrineHydrationModule\Service\DoctrineHydratorFactory;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Hydrator\HydratorPluginManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Hydrator\HydratorPluginManager;
 
 class DoctrineHydratorFactoryTest extends TestCase
 {
@@ -28,24 +34,24 @@ class DoctrineHydratorFactoryTest extends TestCase
     /**
      * Setup the service manager.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->serviceConfig = require TEST_BASE_PATH.'/config/module.config.php';
+        $this->serviceConfig = require TEST_BASE_PATH . '/config/module.config.php';
 
         $this->serviceManager = new ServiceManager();
         $this->serviceManager->setAllowOverride(true);
         $this->serviceManager->setService('config', $this->serviceConfig);
         $this->serviceManager->setService(
             'custom.strategy',
-            $this->getMockBuilder('Zend\Hydrator\Strategy\StrategyInterface')->getMock()
+            $this->getMockBuilder(StrategyInterface::class)->getMock()
         );
         $this->serviceManager->setService(
             'custom.filter',
-            $this->getMockBuilder('Zend\Hydrator\Filter\FilterInterface')->getMock()
+            $this->getMockBuilder(FilterInterface::class)->getMock()
         );
         $this->serviceManager->setService(
             'custom.naming_strategy',
-            $this->getMockBuilder('Zend\Hydrator\NamingStrategy\NamingStrategyInterface')->getMock()
+            $this->getMockBuilder(NamingStrategyInterface::class)->getMock()
         );
 
         $this->hydratorManager = $this->getMockBuilder(HydratorPluginManager::class)
@@ -59,11 +65,11 @@ class DoctrineHydratorFactoryTest extends TestCase
     }
 
     /**
-     * @param $objectManagerClass
+     * @param string $objectManagerClass
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return MockObject
      */
-    protected function stubObjectManager($objectManagerClass)
+    protected function stubObjectManager(string $objectManagerClass)
     {
         $objectManager = $this->getMockBuilder($objectManagerClass)
             ->disableOriginalConstructor()
@@ -81,7 +87,7 @@ class DoctrineHydratorFactoryTest extends TestCase
         $this->stubObjectManager('Doctrine\ORM\EntityManager');
 
         $factory = new DoctrineHydratorFactory();
-        $hydrator = $factory->createServiceWithName($this->hydratorManager, 'customhydrator', 'custom-hydrator');
+        $hydrator = $factory($this->serviceManager, 'custom-hydrator');
 
         return $hydrator;
     }
@@ -94,7 +100,7 @@ class DoctrineHydratorFactoryTest extends TestCase
         $this->stubObjectManager('Doctrine\ODM\MongoDb\DocumentManager');
 
         $factory = new DoctrineHydratorFactory();
-        $hydrator = $factory->createServiceWithName($this->hydratorManager, 'customhydrator', 'custom-hydrator');
+        $hydrator = $factory($this->serviceManager, 'custom-hydrator');
 
         return $hydrator;
     }
@@ -105,7 +111,7 @@ class DoctrineHydratorFactoryTest extends TestCase
     public function it_should_be_initializable()
     {
         $factory = new DoctrineHydratorFactory();
-        $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Service\DoctrineHydratorFactory', $factory);
+        $this->assertInstanceOf(DoctrineHydratorFactory::class, $factory);
     }
 
     /**
@@ -114,7 +120,7 @@ class DoctrineHydratorFactoryTest extends TestCase
     public function it_should_be_an_abstract_factory()
     {
         $factory = new DoctrineHydratorFactory();
-        $this->assertInstanceOf('Zend\ServiceManager\AbstractFactoryInterface', $factory);
+        $this->assertInstanceOf(AbstractFactoryInterface::class, $factory);
     }
 
     /**
@@ -125,10 +131,10 @@ class DoctrineHydratorFactoryTest extends TestCase
         // $this->stubObjectManager('Doctrine\Common\Persistence\ObjectManager');
         $factory = new DoctrineHydratorFactory();
 
-        $result = $factory->canCreateServiceWithName($this->hydratorManager, 'customhydrator', 'custom-hydrator');
+        $result = $factory->canCreate($this->serviceManager, 'custom-hydrator');
         $this->assertTrue($result);
 
-        $result = $factory->canCreateServiceWithName($this->hydratorManager, 'invalidhydrator', 'invalid-hydrator');
+        $result = $factory->canCreate($this->serviceManager, 'invalid-hydrator');
         $this->assertFalse($result);
     }
 
@@ -140,8 +146,8 @@ class DoctrineHydratorFactoryTest extends TestCase
         $hydrator = $this->createOrmHydrator();
 
         $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator', $hydrator);
-        $this->assertInstanceOf('DoctrineModule\Stdlib\Hydrator\DoctrineObject', $hydrator->getExtractService());
-        $this->assertInstanceOf('DoctrineModule\Stdlib\Hydrator\DoctrineObject', $hydrator->getHydrateService());
+        $this->assertInstanceOf('Doctrine\Laminas\Hydrator\DoctrineObject', $hydrator->getExtractService());
+        $this->assertInstanceOf('Doctrine\Laminas\Hydrator\DoctrineObject', $hydrator->getHydrateService());
     }
 
     /**
@@ -182,7 +188,7 @@ class DoctrineHydratorFactoryTest extends TestCase
             ->will($this->returnValue($generatedHydrator));
 
         $factory = new DoctrineHydratorFactory();
-        $hydrator = $factory->createServiceWithName($this->hydratorManager, 'customhydrator', 'custom-hydrator');
+        $hydrator = $factory($this->serviceManager, 'custom-hydrator');
 
         $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator', $hydrator);
         $this->assertInstanceOf('Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\DoctrineObject', $hydrator->getExtractService());
@@ -199,13 +205,13 @@ class DoctrineHydratorFactoryTest extends TestCase
 
         $this->serviceManager->setService(
             'custom.hydrator',
-            $this->getMockBuilder('Zend\Hydrator\ArraySerializable')->getMock()
+            $this->getMockBuilder(ArraySerializableHydrator::class)->getMock()
         );
 
         $hydrator = $this->createOrmHydrator();
 
-        $this->assertInstanceOf('Zend\Hydrator\ArraySerializable', $hydrator->getHydrateService());
-        $this->assertInstanceOf('Zend\Hydrator\ArraySerializable', $hydrator->getExtractService());
+        $this->assertInstanceOf(ArraySerializableHydrator::class, $hydrator->getHydrateService());
+        $this->assertInstanceOf(ArraySerializableHydrator::class, $hydrator->getExtractService());
     }
 
     /**
@@ -223,8 +229,8 @@ class DoctrineHydratorFactoryTest extends TestCase
 
         $hydrator = $this->createOrmHydrator();
 
-        $this->assertInstanceOf('Zend\Hydrator\ArraySerializable', $hydrator->getHydrateService());
-        $this->assertInstanceOf('Zend\Hydrator\ArraySerializable', $hydrator->getExtractService());
+        $this->assertInstanceOf(ArraySerializableHydrator::class, $hydrator->getHydrateService());
+        $this->assertInstanceOf(ArraySerializableHydrator::class, $hydrator->getExtractService());
     }
 
     /**
@@ -236,7 +242,7 @@ class DoctrineHydratorFactoryTest extends TestCase
         $realHydrator = $hydrator->getExtractService();
 
         $this->assertTrue($realHydrator->hasStrategy('fieldname'));
-        $this->assertInstanceOf('Zend\Hydrator\Strategy\StrategyInterface', $realHydrator->getStrategy('fieldname'));
+        $this->assertInstanceOf(StrategyInterface::class, $realHydrator->getStrategy('fieldname'));
     }
 
     /**
@@ -248,7 +254,7 @@ class DoctrineHydratorFactoryTest extends TestCase
         $realHydrator = $hydrator->getExtractService();
 
         $this->assertTrue($realHydrator->hasNamingStrategy());
-        $this->assertInstanceOf('Zend\Hydrator\NamingStrategy\NamingStrategyInterface', $realHydrator->getNamingStrategy());
+        $this->assertInstanceOf(NamingStrategyInterface::class, $realHydrator->getNamingStrategy());
     }
 
     /**

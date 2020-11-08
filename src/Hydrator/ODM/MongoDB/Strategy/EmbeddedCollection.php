@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 
 use Doctrine\Common\Collections\Collection;
@@ -11,13 +13,9 @@ use Doctrine\Instantiator\Instantiator;
 class EmbeddedCollection extends AbstractMongoStrategy
 {
     /**
-     * @param mixed $value
-     *
-     * @return array|mixed
-     *
-     * @throws \Exception
+     * {@inheritDoc}
      */
-    public function extract($value)
+    public function extract($value, ?object $object = null)
     {
         // Embedded Many
         if (!($value instanceof Collection)) {
@@ -25,7 +23,7 @@ class EmbeddedCollection extends AbstractMongoStrategy
         }
 
         $mapping = $this->getClassMetadata()->fieldMappings[$this->getCollectionName()];
-        $result = array();
+        $result = [];
         if ($value) {
             foreach ($value as $index => $object) {
                 $hydrator = $this->getDoctrineHydrator();
@@ -45,18 +43,16 @@ class EmbeddedCollection extends AbstractMongoStrategy
     }
 
     /**
-     * @param mixed $value
-     *
-     * @return array|Collection|mixed
+     * @inheritDoc
      */
-    public function hydrate($value)
+    public function hydrate($value, $data)
     {
         $mapping = $this->metadata->fieldMappings[$this->collectionName];
         $targetDocument = $mapping['targetDocument'];
         $discriminator = isset($mapping ['discriminatorField']) ? $mapping ['discriminatorField'] : false;
-        $discriminatorMap = isset($mapping['discriminatorMap']) ? $mapping['discriminatorMap'] : array();
+        $discriminatorMap = isset($mapping['discriminatorMap']) ? $mapping['discriminatorMap'] : [];
 
-        $result = array();
+        $result = [];
         if ($value) {
             foreach ($value as $key => $data) {
                 // Use configured discriminator as discriminator class:

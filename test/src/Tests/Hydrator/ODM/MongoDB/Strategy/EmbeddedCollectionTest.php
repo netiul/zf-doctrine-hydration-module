@@ -6,7 +6,7 @@ use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\EmbeddedCollecti
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationEmbedMany;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationUser;
 use PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationUserWithAssocEmbedMany;
-use Zend\Hydrator\Strategy\StrategyInterface;
+use Laminas\Hydrator\Strategy\StrategyInterface;
 
 /**
  * Class EmbeddedCollectionTest.
@@ -33,7 +33,7 @@ class EmbeddedCollectionTest extends AbstractMongoStrategyTest
         $embedded = new HydrationEmbedMany();
         $embedded->setId(1);
         $embedded->setName('name');
-        $user->addEmbedMany(array($embedded));
+        $user->addEmbedMany([$embedded]);
 
         $strategy = $this->getStrategy($this->dm, $user, 'embedMany');
         $result = $strategy->extract($user->getEmbedMany());
@@ -49,12 +49,12 @@ class EmbeddedCollectionTest extends AbstractMongoStrategyTest
         $user->setId(1);
         $user->setName('username');
 
-        $data = array(
-            array(
+        $data = [
+            [
                 'id' => 1,
                 'name' => 'name',
-            ),
-        );
+            ],
+        ];
 
         $strategy = $this->getStrategy($this->dm, $user, 'embedMany');
         $strategy->hydrate($data);
@@ -71,12 +71,12 @@ class EmbeddedCollectionTest extends AbstractMongoStrategyTest
         $user->setId(1);
         $user->setName('username');
 
-        $data = array(
-            'user1' => array(
+        $data = [
+            'user1' => [
                 'id' => 1,
                 'name' => 'name',
-            ),
-        );
+            ],
+        ];
 
         $strategy = $this->getStrategy($this->dm, $user, 'embedMany');
         $strategy->hydrate($data);

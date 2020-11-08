@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 
 /**
@@ -8,11 +10,9 @@ namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy;
 class EmbeddedReferenceField extends AbstractMongoStrategy
 {
     /**
-     * @param mixed $value
-     *
-     * @return mixed
+     * {@inheritDoc}
      */
-    public function extract($value)
+    public function extract($value, ?object $object = null)
     {
         if (!$value) {
             return $value;
@@ -27,11 +27,9 @@ class EmbeddedReferenceField extends AbstractMongoStrategy
     }
 
     /**
-     * @param mixed $value
-     *
-     * @return array|mixed
+     * @inheritDoc
      */
-    public function hydrate($value)
+    public function hydrate($value, $data)
     {
         $strategy = new ReferencedField($this->getObjectManager());
         $strategy->setClassMetadata($this->getClassMetadata());

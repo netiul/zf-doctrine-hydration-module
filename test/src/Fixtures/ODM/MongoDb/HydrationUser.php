@@ -43,7 +43,7 @@ class HydrationUser
      *
      * @var ArrayCollection
      */
-    public $referenceMany = array();
+    public $referenceMany = [];
 
     /**
      * @ODM\EmbedOne(targetDocument="HydrationEmbedOne")

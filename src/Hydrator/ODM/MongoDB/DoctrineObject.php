@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB;
 
 use DoctrineModule\Persistence\ObjectManagerAwareInterface;
-use DoctrineModule\Stdlib\Hydrator\DoctrineObject as BaseHydrator;
-use DoctrineModule\Stdlib\Hydrator\Strategy as DoctrineStrategy;
+use Doctrine\Laminas\Hydrator\DoctrineObject as BaseHydrator;
+use Doctrine\Laminas\Hydrator\Strategy as DoctrineStrategy;
 use InvalidArgumentException;
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\AbstractMongoStrategy;
 use Phpro\DoctrineHydrationModule\Hydrator\ODM\MongoDB\Strategy\DateTimeField;
@@ -40,7 +42,7 @@ class DoctrineObject extends BaseHydrator
             }
 
             $fieldMeta = $this->metadata->fieldMappings[$field];
-            if (in_array($fieldMeta['type'], array('date', 'timestamp'))) {
+            if (in_array($fieldMeta['type'], ['date', 'timestamp'])) {
                 $isTimestamp = ($fieldMeta['type'] == 'timestamp');
                 $this->addStrategy($field, new DateTimeField($isTimestamp));
             }
