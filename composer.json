@@ -4,7 +4,7 @@
   "description": "Doctrine hydrators for ZF2 and ZF3",
   "scripts": {
     "test": "phpunit",
-    "cs": "phpcs",
+    "cs": "phpcs -q --report=checkstyle --no-colors",
     "psalm": "psalm --long-progress --show-info=false --output-format=github"
   },
   "keywords": [

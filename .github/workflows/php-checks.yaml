@@ -90,7 +90,8 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
 
       - name: Install Dependencies
-        run: composer install --no-suggest --no-interaction --prefer-dist --no-progress --quiet
+        # Some tests extend test helpers from Doctrine ODM
+        run: composer install --no-suggest --no-interaction --prefer-source --no-progress --quiet
 
       - name: Setup problem matchers for PHPUnit
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
