@@ -61,7 +61,7 @@ class DateTimeFieldTest extends TestCase
     public function itShouldHydrateDatetime(): void
     {
         $date = new \DateTime('1 january 2014');
-        $dateMongo = new UTCDateTime($date->getTimestamp());
+        $dateMongo = new UTCDateTime($date->getTimestamp() * 1000);
         $dateInt = $date->getTimestamp();
         $dateString = $date->format('Y-m-d');
 
@@ -78,7 +78,7 @@ class DateTimeFieldTest extends TestCase
     public function itShouldHydrateTimestamps(): void
     {
         $date = new \DateTime('1 january 2014');
-        $dateMongo = new UTCDateTime($date->getTimestamp());
+        $dateMongo = new UTCDateTime($date->getTimestamp() * 1000);
         $dateInt = $date->getTimestamp();
         $dateString = $date->format('Y-m-d');
 

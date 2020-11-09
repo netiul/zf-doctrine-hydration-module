@@ -36,24 +36,24 @@ class HydrationUserWithAssocEmbedMany
     public $createdAt;
 
     /**
-     * @ODM\ReferenceOne(targetDocument="HydrationReferenceOne")
+     * @ODM\ReferenceOne(targetDocument=HydrationReferenceOne::class)
      */
     public $referenceOne;
 
     /**
-     * @ODM\ReferenceMany(targetDocument="HydrationReferenceMany")
+     * @ODM\ReferenceMany(targetDocument=HydrationReferenceMany::class)
      *
      * @var ArrayCollection
      */
     public $referenceMany = [];
 
     /**
-     * @ODM\EmbedOne(targetDocument="HydrationEmbedOne")
+     * @ODM\EmbedOne(targetDocument=HydrationEmbedOne::class)
      */
     public $embedOne;
 
     /**
-     * @ODM\EmbedMany(targetDocument="HydrationEmbedMany")
+     * @ODM\EmbedMany(targetDocument=HydrationEmbedMany::class)
      *
      * @var ArrayCollection
      */

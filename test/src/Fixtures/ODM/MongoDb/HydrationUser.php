@@ -36,24 +36,24 @@ class HydrationUser
     public $createdAt;
 
     /**
-     * @ODM\ReferenceOne(targetDocument="\PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationReferenceOne")
+     * @ODM\ReferenceOne(targetDocument=HydrationReferenceOne::class)
      */
     public $referenceOne;
 
     /**
-     * @ODM\ReferenceMany(targetDocument="PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationReferenceMany")
+     * @ODM\ReferenceMany(targetDocument=HydrationReferenceMany::class)
      *
      * @var ArrayCollection
      */
     public $referenceMany = [];
 
     /**
-     * @ODM\EmbedOne(targetDocument="PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationEmbedOne")
+     * @ODM\EmbedOne(targetDocument=HydrationEmbedOne::class)
      */
     public $embedOne;
 
     /**
-     * @ODM\EmbedMany(targetDocument="PhproTest\DoctrineHydrationModule\Fixtures\ODM\MongoDb\HydrationEmbedMany")
+     * @ODM\EmbedMany(targetDocument=HydrationEmbedMany::class)
      *
      * @var ArrayCollection
      */

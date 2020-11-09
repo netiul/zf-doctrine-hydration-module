@@ -38,6 +38,6 @@ class EmbeddedReferenceField extends AbstractMongoStrategy
             $strategy->setObject($this->getObject());
         }
 
-        return $strategy->hydrate($value);
+        return $strategy->hydrate($value, null);
     }
 }

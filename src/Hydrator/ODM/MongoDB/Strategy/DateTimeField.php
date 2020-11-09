@@ -68,9 +68,7 @@ class DateTimeField implements StrategyInterface
         }
 
         if ($value instanceof UTCDateTime) {
-            $datetime = $value->toDateTime();
-
-            return $datetime;
+            return $value->toDateTime();
         }
 
         if (is_numeric($value)) {
