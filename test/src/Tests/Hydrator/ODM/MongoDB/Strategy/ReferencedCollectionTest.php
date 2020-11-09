@@ -17,7 +17,7 @@ class ReferencedCollectionTest extends AbstractMongoStrategyTest
     /**
      * @return StrategyInterface
      */
-    protected function createStrategy()
+    protected function createStrategy(): StrategyInterface
     {
         return new ReferencedCollection();
     }
