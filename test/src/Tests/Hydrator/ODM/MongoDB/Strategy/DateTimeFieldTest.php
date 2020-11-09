@@ -66,10 +66,10 @@ class DateTimeFieldTest extends TestCase
         $dateString = $date->format('Y-m-d');
 
         $strategy = $this->createStrategy();
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($date)->getTimestamp());
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateMongo)->getTimestamp());
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateInt)->getTimestamp());
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateString)->getTimestamp());
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($date, null)->getTimestamp());
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateMongo, null)->getTimestamp());
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateInt, null)->getTimestamp());
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateString, null)->getTimestamp());
     }
 
     /**
@@ -83,9 +83,9 @@ class DateTimeFieldTest extends TestCase
         $dateString = $date->format('Y-m-d');
 
         $strategy = $this->createStrategy(true);
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($date));
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateMongo));
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateInt));
-        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateString));
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($date, null));
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateMongo, null));
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateInt, null));
+        $this->assertEquals($date->getTimestamp(), $strategy->hydrate($dateString, null));
     }
 }

@@ -59,7 +59,7 @@ class DefaultRelationTest extends AbstractMongoStrategyTest
         ];
 
         $strategy = $this->getStrategy($this->dm, $user, 'embedMany');
-        $strategy->hydrate($data);
+        $strategy->hydrate($data, null);
         $embedMany = $user->getEmbedMany();
         $this->assertEquals('name', $embedMany[0]->getName());
     }

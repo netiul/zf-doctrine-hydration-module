@@ -54,7 +54,7 @@ class EmbeddedReferenceCollectionTest extends AbstractMongoStrategyTest
         $data = [$id];
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceMany');
-        $strategy->hydrate($data);
+        $strategy->hydrate($data, null);
         $referenceMany = $user->getReferenceMany();
         $this->assertEquals('name', $referenceMany[0]->getName());
     }

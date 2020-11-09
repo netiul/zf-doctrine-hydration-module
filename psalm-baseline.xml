@@ -514,12 +514,6 @@
       <code>$requestedName</code>
     </MissingParamType>
   </file>
-  <file src="test/src/Tests/Hydrator/DoctrineHydratorTest.php">
-    <InvalidArgument occurrences="1">
-      <code>$hydrateService</code>
-      <code>$hydrateService</code>
-    </InvalidArgument>
-  </file>
   <file src="test/src/Tests/Hydrator/ODM/MongoDB/DoctrineObjectTest.php">
     <UndefinedClass occurrences="1">
       <code>BaseTest</code>

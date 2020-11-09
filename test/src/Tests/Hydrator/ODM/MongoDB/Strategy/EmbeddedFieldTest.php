@@ -73,7 +73,7 @@ class EmbeddedFieldTest extends AbstractMongoStrategyTest
         ];
 
         $strategy = $this->getStrategy($this->dm, $user, 'embedOne');
-        $result = $strategy->hydrate($data);
+        $result = $strategy->hydrate($data, null);
         $this->assertEquals('name', $result->getName());
     }
 }

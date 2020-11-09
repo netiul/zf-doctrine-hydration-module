@@ -54,7 +54,7 @@ class EmbeddedReferenceFieldTest extends AbstractMongoStrategyTest
         $data = $id;
 
         $strategy = $this->getStrategy($this->dm, $user, 'referenceOne');
-        $result = $strategy->hydrate($data);
+        $result = $strategy->hydrate($data, null);
         $this->assertEquals('name', $result->getName());
     }
 
