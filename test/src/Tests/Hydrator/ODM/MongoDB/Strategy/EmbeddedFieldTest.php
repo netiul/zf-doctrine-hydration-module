@@ -17,7 +17,7 @@ class EmbeddedFieldTest extends AbstractMongoStrategyTest
     /**
      * @return StrategyInterface
      */
-    protected function createStrategy()
+    protected function createStrategy(): StrategyInterface
     {
         return new EmbeddedField();
     }

@@ -340,6 +340,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
                             $conditionMap[$filterConfig['condition']] :
                             FilterComposite::CONDITION_OR;
 
+            /** @var string $filterService */
             $filterService = $filterConfig['filter'];
             if (!$container->has($filterService)) {
                 throw new ServiceNotCreatedException(
@@ -347,6 +348,7 @@ class DoctrineHydratorFactory implements AbstractFactoryInterface
                 );
             }
 
+            /** @var object $filterService */
             $filterService = $container->get($filterService);
             if (!$filterService instanceof FilterInterface) {
                 throw new ServiceNotCreatedException(

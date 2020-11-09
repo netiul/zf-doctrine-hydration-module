@@ -14,15 +14,15 @@ use PHPUnit\Framework\TestCase;
 class DoctrineHydratorTest extends TestCase
 {
     /**
-     * @param null $hydrateService
-     * @param null $extractService
+     * @param HydratorInterface|null $hydrateService
+     * @param HydratorInterface|null $extractService
      *
      * @return DoctrineHydrator
      */
-    protected function createHydrator($hydrateService = null, $extractService = null): DoctrineHydrator
+    protected function createHydrator(?HydratorInterface $hydrateService = null, ?HydratorInterface $extractService = null): DoctrineHydrator
     {
-        $hydrateService = $hydrateService ? $hydrateService : $this->getMockBuilder('Laminas\Hydrator\HydratorInterface')->getMock();
-        $extractService = $extractService ? $extractService : $this->getMockBuilder('Laminas\Hydrator\HydratorInterface')->getMock();
+        $hydrateService = $hydrateService ? $hydrateService : $this->getMockBuilder(HydratorInterface::class)->getMock();
+        $extractService = $extractService ? $extractService : $this->getMockBuilder(HydratorInterface::class)->getMock();
 
         return new DoctrineHydrator($extractService, $hydrateService);
     }

@@ -5,14 +5,6 @@
       <code>$data</code>
       <code>$object</code>
     </InvalidArgument>
-    <MissingParamType occurrences="2">
-      <code>$extractService</code>
-      <code>$hydrateService</code>
-    </MissingParamType>
-    <MixedAssignment occurrences="2">
-      <code>$this-&gt;extractService</code>
-      <code>$this-&gt;hydrateService</code>
-    </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>object</code>
     </MixedInferredReturnType>
@@ -280,7 +272,7 @@
       <code>configureHydratorNamingStrategy</code>
       <code>configureHydratorStrategies</code>
     </MissingReturnType>
-    <MixedArgument occurrences="22">
+    <MixedArgument occurrences="20">
       <code>$config</code>
       <code>$config</code>
       <code>$config</code>
@@ -294,10 +286,6 @@
       <code>$config['object_manager']</code>
       <code>$config['object_manager']</code>
       <code>$extractService</code>
-      <code>$filterService</code>
-      <code>$filterService</code>
-      <code>$filterService</code>
-      <code>$filterService</code>
       <code>$hydrateService</code>
       <code>$namingStrategy</code>
       <code>$namingStrategyKey</code>
@@ -322,7 +310,7 @@
     <MixedArrayOffset occurrences="1">
       <code>$conditionMap[$filterConfig['condition']]</code>
     </MixedArrayOffset>
-    <MixedAssignment occurrences="17">
+    <MixedAssignment occurrences="15">
       <code>$config</code>
       <code>$config</code>
       <code>$config</code>
@@ -331,8 +319,6 @@
       <code>$extractService</code>
       <code>$extractService</code>
       <code>$filterConfig</code>
-      <code>$filterService</code>
-      <code>$filterService</code>
       <code>$hydrateService</code>
       <code>$hydrateService</code>
       <code>$hydrator</code>
@@ -529,25 +515,10 @@
     </MissingParamType>
   </file>
   <file src="test/src/Tests/Hydrator/DoctrineHydratorTest.php">
-    <ArgumentTypeCoercion occurrences="2">
-      <code>'Laminas\Hydrator\HydratorInterface'</code>
-      <code>'Laminas\Hydrator\HydratorInterface'</code>
-      <code>'Laminas\Hydrator\HydratorInterface'</code>
-      <code>'Laminas\Hydrator\HydratorInterface'</code>
-    </ArgumentTypeCoercion>
-    <DocblockTypeContradiction occurrences="2">
-      <code>$extractService</code>
-      <code>$hydrateService</code>
-    </DocblockTypeContradiction>
-    <InvalidArgument occurrences="3">
-      <code>$extractService</code>
+    <InvalidArgument occurrences="1">
       <code>$hydrateService</code>
       <code>$hydrateService</code>
     </InvalidArgument>
-    <RedundantConditionGivenDocblockType occurrences="2">
-      <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
-      <code>$this-&gt;getMockBuilder('Laminas\Hydrator\HydratorInterface')-&gt;getMock()</code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="test/src/Tests/Hydrator/ODM/MongoDB/DoctrineObjectTest.php">
     <UndefinedClass occurrences="1">

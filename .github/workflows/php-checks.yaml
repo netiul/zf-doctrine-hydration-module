@@ -33,10 +33,10 @@ jobs:
           tools: composer, cs2pr
 
       - name: Install Dependencies
-        run: composer install --prefer-source --no-suggest --no-interaction --no-progress --quiet
+        run: composer install --prefer-dist --no-suggest --no-interaction --no-progress --quiet
 
       - name: phpcs
-        run: composer cs -- -q --report=checkstyle --no-colors | cs2pr
+        run: ./vendor/bin/phpcs -q --report=checkstyle --no-colors | cs2pr
 
   psalm:
     strategy:
@@ -55,10 +55,10 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: ${{ env.extensions }}
-          tools: pecl
+          tools: composer
 
       - name: Install Dependencies
-        run: composer install --no-suggest --no-interaction --prefer-source --no-progress --quiet
+        run: composer install --no-suggest --no-interaction --prefer-dist --no-progress --quiet
 
       - name: Psalm
         timeout-minutes: 10

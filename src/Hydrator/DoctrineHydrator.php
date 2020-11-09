@@ -23,10 +23,10 @@ class DoctrineHydrator implements HydratorInterface
     protected $hydrateService;
 
     /**
-     * @param $extractService
-     * @param $hydrateService
+     * @param HydratorInterface $extractService
+     * @param HydratorInterface|DoctrineHydratorInterface $hydrateService
      */
-    public function __construct($extractService, $hydrateService)
+    public function __construct(HydratorInterface $extractService, $hydrateService)
     {
         $this->extractService = $extractService;
         $this->hydrateService = $hydrateService;
@@ -55,7 +55,7 @@ class DoctrineHydrator implements HydratorInterface
      *
      * @return array
      */
-    public function extract($object): array
+    public function extract(object $object): array
     {
         return $this->extractService->extract($object);
     }
@@ -68,7 +68,7 @@ class DoctrineHydrator implements HydratorInterface
      *
      * @return object
      */
-    public function hydrate(array $data, object $object)
+    public function hydrate(array $data, object $object): object
     {
         // Laminas hydrator:
         if ($this->hydrateService instanceof HydratorInterface) {
