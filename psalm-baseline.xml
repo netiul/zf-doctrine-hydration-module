@@ -178,9 +178,6 @@
       <code>EmbeddedReferenceCollection</code>
       <code>EmbeddedReferenceCollection</code>
     </PropertyNotSetInConstructor>
-    <TooFewArguments occurrences="1">
-      <code>hydrate</code>
-    </TooFewArguments>
   </file>
   <file src="src/Hydrator/ODM/MongoDB/Strategy/EmbeddedReferenceField.php">
     <MixedArgument occurrences="1">
@@ -193,9 +190,6 @@
       <code>EmbeddedReferenceField</code>
       <code>EmbeddedReferenceField</code>
     </PropertyNotSetInConstructor>
-    <TooFewArguments occurrences="1">
-      <code>hydrate</code>
-    </TooFewArguments>
   </file>
   <file src="src/Hydrator/ODM/MongoDB/Strategy/ReferencedCollection.php">
     <MissingParamType occurrences="2">
@@ -411,16 +405,11 @@
     <InvalidReturnType occurrences="1">
       <code>int</code>
     </InvalidReturnType>
-    <MissingParamType occurrences="4">
-      <code>$embedMany</code>
-      <code>$embedMany</code>
+    <MissingParamType occurrences="2">
       <code>$referenceMany</code>
       <code>$referenceMany</code>
     </MissingParamType>
-    <MissingPropertyType occurrences="4">
-      <code>$embedOne</code>
-      <code>$id</code>
-      <code>$name</code>
+    <MissingPropertyType occurrences="1">
       <code>$referenceOne</code>
     </MissingPropertyType>
     <MissingReturnType occurrences="12">
@@ -437,13 +426,11 @@
       <code>setReferenceMany</code>
       <code>setReferenceOne</code>
     </MissingReturnType>
-    <MixedAssignment occurrences="6">
+    <MixedAssignment occurrences="3">
       <code>$record</code>
       <code>$record</code>
       <code>$record</code>
       <code>$record</code>
-      <code>$this-&gt;birthday</code>
-      <code>$this-&gt;embedMany</code>
     </MixedAssignment>
     <PropertyNotSetInConstructor occurrences="1">
       <code>$birthday</code>
@@ -534,16 +521,6 @@
       <code>getTimestamp</code>
       <code>getTimestamp</code>
     </MixedMethodCall>
-    <TooFewArguments occurrences="8">
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-      <code>hydrate</code>
-    </TooFewArguments>
   </file>
   <file src="test/src/Tests/Hydrator/ODM/MongoDB/Strategy/DefaultRelationTest.php">
     <MissingDependency occurrences="1">

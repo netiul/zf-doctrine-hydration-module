@@ -9,7 +9,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 /** @ODM\EmbeddedDocument */
 class HydrationEmbedOne
 {
-    /** @ODM\Id */
+    /** @ODM\Field(type="int") */
     public $id;
 
     /** @ODM\Field(type="string") */

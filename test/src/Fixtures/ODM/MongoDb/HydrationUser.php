@@ -15,10 +15,16 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  */
 class HydrationUser
 {
-    /** @ODM\Id */
+    /**
+     * @ODM\Id
+     * @var string|null
+     */
     public $id;
 
-    /** @ODM\Field(type="string") */
+    /**
+     * @ODM\Field(type="string")
+     * @var string|null
+     */
     public $name;
 
     /**
@@ -49,13 +55,15 @@ class HydrationUser
 
     /**
      * @ODM\EmbedOne(targetDocument=HydrationEmbedOne::class)
+     *
+     * @var HydrationEmbedOne|null
      */
     public $embedOne;
 
     /**
      * @ODM\EmbedMany(targetDocument=HydrationEmbedMany::class)
      *
-     * @var ArrayCollection
+     * @var ArrayCollection<string, HydrationEmbedMany>
      */
     public $embedMany;
 
@@ -72,7 +80,7 @@ class HydrationUser
     }
 
     /**
-     * @param mixed $embedOne
+     * @param HydrationEmbedOne $embedOne
      */
     public function setEmbedOne($embedOne)
     {
@@ -80,7 +88,7 @@ class HydrationUser
     }
 
     /**
-     * @return mixed
+     * @return HydrationEmbedOne|null
      */
     public function getEmbedOne()
     {
@@ -88,7 +96,7 @@ class HydrationUser
     }
 
     /**
-     * @param mixed $embedMany
+     * @param ArrayCollection<string, HydrationEmbedMany> $embedMany
      */
     public function setEmbedMany($embedMany)
     {
@@ -96,7 +104,7 @@ class HydrationUser
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection<string, HydrationEmbedMany>
      */
     public function getEmbedMany()
     {
@@ -104,7 +112,7 @@ class HydrationUser
     }
 
     /**
-     * @param $embedMany
+     * @param HydrationEmbedMany[] $embedMany
      */
     public function addEmbedMany($embedMany)
     {
@@ -114,7 +122,7 @@ class HydrationUser
     }
 
     /**
-     * @param $embedMany
+     * @param HydrationEmbedMany[] $embedMany
      */
     public function removeEmbedMany($embedMany)
     {
@@ -124,7 +132,7 @@ class HydrationUser
     }
 
     /**
-     * @param \Doctrine\Common\Collections\ArrayCollection $referenceMany
+     * @param ArrayCollection $referenceMany
      */
     public function setReferenceMany($referenceMany)
     {
@@ -132,7 +140,7 @@ class HydrationUser
     }
 
     /**
-     * @return \Doctrine\Common\Collections\ArrayCollection
+     * @return ArrayCollection
      */
     public function getReferenceMany()
     {
@@ -176,7 +184,7 @@ class HydrationUser
     }
 
     /**
-     * @param mixed $id
+     * @param string $id
      */
     public function setId($id)
     {
@@ -184,7 +192,7 @@ class HydrationUser
     }
 
     /**
-     * @return mixed
+     * @return string|null
      */
     public function getId()
     {
@@ -208,7 +216,7 @@ class HydrationUser
     }
 
     /**
-     * @param mixed $birthday
+     * @param \DateTime $birthday
      */
     public function setBirthday($birthday)
     {

@@ -30,10 +30,10 @@ use Laminas\ServiceManager\Exception\ServiceNotFoundException;
  */
 class DoctrineHydratorFactory implements AbstractFactoryInterface
 {
-    const FACTORY_NAMESPACE = 'doctrine-hydrator';
+    public const FACTORY_NAMESPACE = 'doctrine-hydrator';
 
-    const OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB';
-    const OBJECT_MANAGER_TYPE_ORM = 'ORM';
+    public const OBJECT_MANAGER_TYPE_ODM_MONGODB = 'ODM/MongoDB';
+    public const OBJECT_MANAGER_TYPE_ORM = 'ORM';
 
     /**
      * Cache of canCreateServiceWithName lookups.
