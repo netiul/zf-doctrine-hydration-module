@@ -1,25 +1,29 @@
 <?php
 
-declare(strict_types=1);
+//declare(strict_types=1);
 
 namespace PhproTest\DoctrineHydrationModule\Tests\Hydrator;
 
 use Laminas\Hydrator\HydratorInterface;
 use Phpro\DoctrineHydrationModule\Hydrator\DoctrineHydrator;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
  * Class DoctrineHydratorTest.
  */
 class DoctrineHydratorTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
-     * @param HydratorInterface|null $hydrateService
+     * @param HydratorInterface|\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface|null $hydrateService
      * @param HydratorInterface|null $extractService
      *
      * @return DoctrineHydrator
      */
-    protected function createHydrator(?HydratorInterface $hydrateService = null, ?HydratorInterface $extractService = null): DoctrineHydrator
+    protected function createHydrator($hydrateService = null, ?HydratorInterface $extractService = null): DoctrineHydrator
     {
         $hydrateService = $hydrateService ? $hydrateService : $this->getMockBuilder(HydratorInterface::class)->getMock();
         $extractService = $extractService ? $extractService : $this->getMockBuilder(HydratorInterface::class)->getMock();
@@ -103,14 +107,10 @@ class DoctrineHydratorTest extends TestCase
         $object = new \stdClass();
         $data = ['field' => 'value'];
 
-        $hydrateService = $this->getMockBuilder(\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface::class)->getMock();
-        $hydrateService
-            ->expects($this->any())
-            ->method('hydrate')
-            ->with($object, $data)
-            ->will($this->returnValue($data));
+        $hydrateService = $this->prophesize(\Doctrine\ODM\MongoDB\Hydrator\HydratorInterface::class);
+        $hydrateService->hydrate(Argument::is($object), Argument::is($data))->willReturn($data);
 
-        $hydrator = $this->createHydrator($hydrateService, null);
+        $hydrator = $this->createHydrator($hydrateService->reveal(), null);
         $result = $hydrator->hydrate($data, $object);
 
         $this->assertEquals($object, $result);

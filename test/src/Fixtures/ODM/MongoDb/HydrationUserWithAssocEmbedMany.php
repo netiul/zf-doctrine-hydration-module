@@ -22,14 +22,14 @@ class HydrationUserWithAssocEmbedMany
     public $name;
 
     /**
-     * @ODM\Field(type="date")
+     * @ODM\Field(type="timestamp")
      *
      * @var \DateTime
      */
     public $birthday;
 
     /**
-     * @ODM\Timestamp
+     * @ODM\Field(type="date")
      *
      * @var \DateTime
      */
